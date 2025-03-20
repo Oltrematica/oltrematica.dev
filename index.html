@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oltrematica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        
+        .logo {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .animated-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            50% {
+                transform: translate(100px, 0) scale(1);
+            }
+            75% {
+                transform: translate(50px, 50px) scale(0.9);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="background"></div>
+    
+    <div class="logo-container">
+        <img src="cropped-cropped-cropped-Oltrematica_logo_POS-600x133.png" alt="Oltrematica Logo" class="logo">
+    </div>
+
+    <script>
+        // Funzione per creare animazioni di sfondo
+        function createBackgroundAnimation() {
+            const background = document.getElementById('background');
+            const colors = ['#3498db', '#2ecc71', '#9b59b6', '#e74c3c', '#f1c40f'];
+            
+            for (let i = 0; i < 15; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('animated-circle');
+                
+                // Dimensioni casuali
+                const size = Math.random() * 200 + 50;
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                
+                // Posizione casuale
+                circle.style.left = `${Math.random() * 100}%`;
+                circle.style.top = `${Math.random() * 100}%`;
+                
+                // Colore casuale
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                circle.style.backgroundColor = color;
+                
+                // Animazione personalizzata
+                circle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                circle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                background.appendChild(circle);
+            }
+        }
+        
+        // Inizializza l'animazione di sfondo
+        window.onload = createBackgroundAnimation;
+    </script>
+</body>
+</html>
