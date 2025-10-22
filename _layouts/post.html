@@ -1,0 +1,110 @@
+---
+layout: default
+---
+
+<article class="container mx-auto px-4 py-12 max-w-4xl">
+  <!-- Article Header -->
+  <header class="mb-12 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+      {{ page.title }}
+    </h1>
+
+    <div class="flex flex-wrap items-center justify-center text-gray-600 mb-6 gap-4">
+      <time datetime="{{ page.date | date_to_xmlschema }}" class="flex items-center">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+        {{ page.date | date: "%d %B %Y" }}
+      </time>
+
+      {% if page.author %}
+      <span class="flex items-center">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+        </svg>
+        {% if page.linkedin %}
+          <a href="https://www.linkedin.com/in/{{ page.linkedin }}" target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors">
+            {{ page.author }}
+          </a>
+        {% else %}
+          {{ page.author }}
+        {% endif %}
+      </span>
+      {% endif %}
+
+      {% if page.reading_time %}
+      <span class="flex items-center">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        {{ page.reading_time }} min lettura
+      </span>
+      {% endif %}
+    </div>
+
+    {% if page.tags %}
+    <div class="flex flex-wrap justify-center gap-2 mb-6">
+      {% for tag in page.tags %}
+      <span class="inline-block bg-blue-100 text-brand-primary px-4 py-1 rounded-full text-sm font-medium">
+        {{ tag }}
+      </span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if page.image %}
+    <div class="mt-8 rounded-xl overflow-hidden shadow-lg">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="w-full h-auto">
+    </div>
+    {% endif %}
+  </header>
+
+  <!-- Article Content -->
+  <div class="post-content prose prose-lg max-w-none">
+    {{ content }}
+  </div>
+
+  <!-- Article Footer -->
+  <footer class="mt-12 pt-8 border-t border-gray-200">
+    <div class="flex items-center justify-between">
+      <div>
+        <a href="{{ '/' | relative_url }}"
+           class="btn btn-outline">
+          ← Torna al Blog
+        </a>
+      </div>
+    </div>
+  </footer>
+</article>
+
+<!-- Related Posts -->
+{% if site.related_posts.size > 0 %}
+<section class="bg-gray-50 py-16">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <h2 class="text-3xl font-bold text-center mb-12">Articoli Correlati</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      {% for post in site.related_posts limit:3 %}
+      <article class="card p-6 hover-lift">
+        {% if post.image %}
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="w-full h-48 object-cover rounded-lg mb-4">
+        {% endif %}
+        <h3 class="text-xl font-semibold mb-2">
+          <a href="{{ post.url | relative_url }}" class="hover:text-brand-primary transition-colors">
+            {{ post.title }}
+          </a>
+        </h3>
+        <p class="text-gray-600 text-sm mb-4">
+          {{ post.date | date: "%d %B %Y" }}
+        </p>
+        <p class="text-gray-700">
+          {{ post.excerpt | strip_html | truncatewords: 20 }}
+        </p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Code copy functionality -->
+<script src="{{ '/assets/js/code-copy.js' | relative_url }}"></script>

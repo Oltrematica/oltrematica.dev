@@ -1,0 +1,53 @@
+<section class="gradient-bg text-white py-20 md:py-32 relative overflow-hidden">
+  <!-- Animated background circles -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse-slow"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Logo -->
+      <div class="mb-8 animate-fade-in-up">
+        <img src="{{ '/assets/images/logo.png' | relative_url }}"
+             alt="{{ site.title }}"
+             class="h-32 w-auto mx-auto brightness-0 invert">
+      </div>
+
+      <!-- Main heading -->
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-up leading-tight">
+        Oltrematica Dev Team
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-xl md:text-2xl lg:text-3xl mb-8 text-blue-100 animate-fade-in-up font-light">
+        Trasformiamo le tue idee in soluzioni digitali innovative
+      </p>
+
+      <!-- Description -->
+      <p class="text-lg md:text-xl mb-12 text-blue-100 max-w-2xl mx-auto animate-fade-in-up">
+        Un team di sviluppatori specializzato nella creazione di applicazioni web moderne,
+        scalabili e performanti.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up">
+        <a href="{{ '/blog/' | relative_url }}"
+           class="btn btn-primary bg-white text-brand-primary hover:bg-gray-100 shadow-xl">
+          Esplora il Blog
+        </a>
+        <a href="{{ '/contact/' | relative_url }}"
+           class="btn btn-secondary shadow-xl">
+          Contattaci
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="mt-16 animate-bounce">
+        <svg class="w-6 h-6 mx-auto text-white opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

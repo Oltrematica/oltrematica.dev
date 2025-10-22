@@ -1,0 +1,63 @@
+{% if paginator.total_pages > 1 %}
+<nav class="flex justify-center items-center space-x-2 mt-12" aria-label="Pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}"
+       class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors flex items-center">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Precedente
+    </a>
+  {% else %}
+    <span class="px-4 py-2 border border-gray-200 rounded-lg text-gray-400 cursor-not-allowed flex items-center">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Precedente
+    </span>
+  {% endif %}
+
+  <div class="hidden sm:flex space-x-1">
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="px-4 py-2 bg-brand-primary text-white rounded-lg font-medium">
+          {{ page }}
+        </span>
+      {% elsif page == 1 %}
+        <a href="{{ '/blog/' | relative_url }}"
+           class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+          {{ page }}
+        </a>
+      {% else %}
+        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}"
+           class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+          {{ page }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="sm:hidden">
+    <span class="px-4 py-2 text-gray-700">
+      Pagina {{ paginator.page }} di {{ paginator.total_pages }}
+    </span>
+  </div>
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}"
+       class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors flex items-center">
+      Successivo
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  {% else %}
+    <span class="px-4 py-2 border border-gray-200 rounded-lg text-gray-400 cursor-not-allowed flex items-center">
+      Successivo
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </span>
+  {% endif %}
+</nav>
+{% endif %}

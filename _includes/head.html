@@ -1,0 +1,56 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO Meta Tags -->
+  {% seo %}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+
+  <!-- Tailwind CSS -->
+  <link href="{{ '/assets/css/styles.css' | relative_url }}" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- RSS Feed -->
+  <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@{{ site.twitter.username }}">
+
+  <!-- Author Meta Tags -->
+  {% if page.layout == 'post' and page.author %}
+    <meta name="author" content="{{ page.author }}">
+    {% if page.linkedin %}
+      <link rel="author" href="https://www.linkedin.com/in/{{ page.linkedin }}">
+      <meta property="article:author" content="https://www.linkedin.com/in/{{ page.linkedin }}">
+    {% endif %}
+  {% endif %}
+
+  <!-- Additional Meta Tags -->
+  <meta name="theme-color" content="#1e40af">
+  <meta name="robots" content="index, follow">
+
+  <!-- Preload key resources -->
+  <link rel="preload" href="{{ '/assets/css/styles.css' | relative_url }}" as="style">
+
+  {% if page.custom_css %}
+    <link rel="stylesheet" href="{{ '/assets/css/' | append: page.custom_css | relative_url }}">
+  {% endif %}
+
+  {% if page.custom_js %}
+    <script defer src="{{ '/assets/js/' | append: page.custom_js | relative_url }}"></script>
+  {% endif %}
+</head>

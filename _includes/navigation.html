@@ -1,0 +1,79 @@
+<nav class="bg-white backdrop-blur-sm shadow-sm font-header">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="{{ '/' | relative_url }}" class="flex items-center gap-2">
+          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" class="h-10 w-auto">
+          <span id="terminal-text" class="text-gray-600 text-base md:text-lg" style="font-family: 'JetBrains Mono', 'Courier New', monospace; line-height: 1; margin-top: 7px;">
+            <span class="text-gray-400">//</span><span id="typed-text"></span><span id="cursor" class="cursor-blink">█</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white/90 backdrop-blur-sm">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="{{ '/' | relative_url }}"
+         class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50 {% if page.url == '/' %}text-brand-primary bg-blue-50{% endif %}">
+        Home
+      </a>
+      <a href="{{ '/blog/' | relative_url }}"
+         class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50 {% if page.url contains '/blog' %}text-brand-primary bg-blue-50{% endif %}">
+        Blog
+      </a>
+      <a href="{{ '/about/' | relative_url }}"
+         class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50 {% if page.url == '/about/' %}text-brand-primary bg-blue-50{% endif %}">
+        Chi Siamo
+      </a>
+      <a href="{{ '/contact/' | relative_url }}"
+         class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50 {% if page.url == '/contact/' %}text-brand-primary bg-blue-50{% endif %}">
+        Contatti
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  .cursor-blink {
+    animation: blink 1s infinite;
+  }
+</style>
+
+<script>
+  // Toggle mobile menu
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Terminal typing effect
+    const text = ' DevTeam';
+    const typedTextElement = document.getElementById('typed-text');
+    const cursorElement = document.getElementById('cursor');
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        typedTextElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 100); // 100ms delay between characters
+      }
+    }
+
+    // Start typing after a small delay
+    setTimeout(typeWriter, 300);
+  });
+</script>
