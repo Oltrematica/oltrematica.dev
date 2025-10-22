@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Quando la ricerca diventa conversazione: ripensare il posizionamento digitale nell'era dei motori AI"
-date: 2025-10-23
+date: 2025-10-21
 author: "Andrea Margiovanni"
 linkedin: "margio"
 tags: [SEO, AI, Search, Digital Strategy, GEO, AEO]
