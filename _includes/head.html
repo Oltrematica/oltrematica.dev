@@ -10,13 +10,24 @@
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
 
-  <!-- Tailwind CSS -->
-  <link href="{{ '/assets/css/styles.css' | relative_url }}" rel="stylesheet">
+  <!-- Critical CSS inline per FCP ottimizzato -->
+  <style>{% include critical.css %}</style>
 
-  <!-- Google Fonts -->
+  <!-- Preload font file critico -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Preload CSS principale -->
+  <link rel="preload" href="{{ '/assets/css/styles.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}"></noscript>
+
+  <!-- Google Fonts con caricamento asincrono -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+
+  <!-- Polyfill per browser legacy -->
+  <script>!function(e){"use strict";var t=function(t,n,r){var o,i=e.document,l=i.createElement("link");if(n)o=n;else{var a=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=a[a.length-1]}var d=i.styleSheets;if(r)for(var f in r)r.hasOwnProperty(f)&&l.setAttribute(f,r[f]);l.rel="stylesheet",l.href=t,l.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(l,n?o:o.nextSibling)});var s=function(e){for(var t=l.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){s(e)})};function c(){l.addEventListener&&l.removeEventListener("load",c),l.media=r.media||"all"}return l.addEventListener&&l.addEventListener("load",c),l.onloadcssdefined=s,s(c),l};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);</script>
 
   <!-- RSS Feed -->
   <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}">
@@ -43,14 +54,16 @@
   <meta name="theme-color" content="#1e40af">
   <meta name="robots" content="index, follow">
 
-  <!-- Preload key resources -->
-  <link rel="preload" href="{{ '/assets/css/styles.css' | relative_url }}" as="style">
-
   {% if page.custom_css %}
     <link rel="stylesheet" href="{{ '/assets/css/' | append: page.custom_css | relative_url }}">
   {% endif %}
 
   {% if page.custom_js %}
     <script defer src="{{ '/assets/js/' | append: page.custom_js | relative_url }}"></script>
+  {% endif %}
+
+  <!-- Preload immagine LCP per i post -->
+  {% if page.layout == 'post' and page.image %}
+    <link rel="preload" as="image" href="{{ page.image | relative_url }}" fetchpriority="high">
   {% endif %}
 </head>
