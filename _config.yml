@@ -8,6 +8,18 @@ author: "Oltrematica"
 # Build settings
 markdown: kramdown
 highlighter: rouge
+
+# Kramdown settings
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    default_lang: text
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
 permalink: /blog/:year/:month/:day/:title/
 paginate: 6
 paginate_path: "/page:num/"
