@@ -112,6 +112,7 @@ layout: post
 title: "Titolo del Post"
 date: 2025-01-15
 author: "Nome Cognome"
+linkedin: "username-linkedin"
 tags: [tag1, tag2, tag3]
 reading_time: 5
 excerpt: "Breve descrizione del post"
@@ -120,6 +121,19 @@ image: /assets/images/post-image.jpg
 
 Contenuto del post in markdown...
 ```
+
+**Campi obbligatori:**
+- `layout`: deve essere `post`
+- `title`: titolo dell'articolo
+- `date`: data di pubblicazione (formato YYYY-MM-DD)
+- `author`: nome completo dell'autore
+- `linkedin`: username LinkedIn dell'autore (senza URL, solo lo username)
+- `excerpt`: breve descrizione per anteprima e SEO
+- `image`: URL dell'immagine di copertina
+
+**Campi opzionali:**
+- `tags`: array di tag per categorizzare il post
+- `reading_time`: tempo di lettura stimato in minuti
 
 ### Aggiungere un Servizio
 
