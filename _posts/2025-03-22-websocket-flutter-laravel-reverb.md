@@ -7,7 +7,7 @@ linkedin: "alexandru-ungureanu-6b83a6235"
 tags: [Flutter, Laravel, WebSocket, Open Source]
 reading_time: 6
 excerpt: "Come abbiamo costruito una comunicazione real-time tra Flutter e Laravel per ActiveAge, e perché abbiamo deciso di rendere open source la libreria."
-image: /assets/images/dartflutterreverb.png
+image: /assets/images/dartflutterreverb.jpeg
 ---
 
 Qualche mese fa ci siamo trovati di fronte a una di quelle sfide che sembrano semplici sulla carta ma poi ti fanno perdere più tempo del previsto. Stavamo lavorando su [ActiveAge](https://web.activeage.it/), una piattaforma per il benessere degli anziani, e avevamo bisogno di una comunicazione real-time tra la nostra app Flutter e il backend Laravel.
