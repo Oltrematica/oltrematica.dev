@@ -1,0 +1,20 @@
+{% comment %}
+  Usage:
+  {% include components/button.html
+     text="Click me"
+     url="/path"
+     style="primary|secondary|outline"
+     target="_blank"
+  %}
+{% endcomment %}
+
+{% assign btn_style = include.style | default: "primary" %}
+{% assign btn_text = include.text | default: "Button" %}
+{% assign btn_url = include.url | default: "#" %}
+{% assign btn_target = include.target %}
+
+<a href="{{ btn_url }}"
+   {% if btn_target %}target="{{ btn_target }}" rel="noopener noreferrer"{% endif %}
+   class="btn btn-{{ btn_style }}">
+  {{ btn_text }}
+</a>

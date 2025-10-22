@@ -1,0 +1,105 @@
+<footer class="bg-gray-900 text-white">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- About Section -->
+      <div class="md:col-span-2">
+        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" class="h-10 w-auto mb-4 brightness-0 invert">
+        <p class="text-gray-400 mb-4">
+          {{ site.description }}
+        </p>
+        {% include components/social-links.html %}
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Link Rapidi</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="{{ '/' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="{{ '/about/' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">
+              Chi Siamo
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contatti</h3>
+        <ul class="space-y-2 text-gray-400">
+          <li>
+            <a href="mailto:{{ site.contact.email }}" class="hover:text-white transition-colors">
+              {{ site.contact.email }}
+            </a>
+          </li>
+          {% if site.contact.phone %}
+          <li>
+            <a href="tel:{{ site.contact.phone }}" class="hover:text-white transition-colors">
+              {{ site.contact.phone }}
+            </a>
+          </li>
+          {% endif %}
+          <li>
+            <a href="{{ '/feed.xml' | relative_url }}" class="hover:text-white transition-colors" target="_blank" rel="noopener">
+              RSS Feed
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+      <p>
+        &copy; {{ 'now' | date: "%Y" }} {{ site.title }}. Tutti i diritti riservati.
+      </p>
+      <p class="mt-2 text-sm">
+        Realizzato con <span class="text-red-500">&hearts;</span> usando
+        <a href="https://jekyllrb.com" target="_blank" rel="noopener" class="hover:text-white transition-colors">Jekyll</a>
+        e
+        <a href="https://tailwindcss.com" target="_blank" rel="noopener" class="hover:text-white transition-colors">Tailwind CSS</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top"
+        class="fixed bottom-8 right-8 bg-brand-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        aria-label="Torna su">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+  </svg>
+</button>
+
+<script>
+  // Back to top button functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('back-to-top');
+
+    if (backToTopButton) {
+      // Show/hide button based on scroll position
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove('opacity-0', 'invisible');
+          backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopButton.classList.remove('opacity-100', 'visible');
+          backToTopButton.classList.add('opacity-0', 'invisible');
+        }
+      });
+
+      // Scroll to top when clicked
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  });
+</script>
