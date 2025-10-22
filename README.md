@@ -102,7 +102,23 @@ Questo comando:
 
 ## Creazione di Contenuti
 
-### Nuovo Post del Blog
+### Workflow per Proporre un Nuovo Articolo
+
+Per contribuire con un nuovo articolo al blog, segui questo processo:
+
+#### 1. Crea un branch dedicato
+
+Stacca un nuovo branch dal `main` seguendo questa convenzione di naming:
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b post/nome-del-post
+```
+
+Usa un nome descrittivo e in kebab-case (es. `post/ai-nel-workflow`, `post/refactoring-legacy-code`).
+
+#### 2. Scrivi l'articolo
 
 Crea un nuovo file in `_posts/` con il formato: `YYYY-MM-DD-titolo.md`
 
@@ -134,6 +150,45 @@ Contenuto del post in markdown...
 **Campi opzionali:**
 - `tags`: array di tag per categorizzare il post
 - `reading_time`: tempo di lettura stimato in minuti
+
+#### 3. Segui le linee guida di scrittura
+
+Consulta il file [AGENTS.md](AGENTS.md) per le linee guida su tono e stile di scrittura. Questo file contiene indicazioni essenziali per:
+- Scrivere con un tono naturale e autentico
+- Evitare uno stile troppo meccanico o schematico
+- Usare correttamente maiuscole e punteggiatura
+- Strutturare l'articolo in modo fluido
+
+Se usi strumenti AI per aiutarti nella scrittura, il file [AGENTS.md](AGENTS.md) contiene istruzioni specifiche da fornire agli agent per ottenere un risultato coerente con il nostro stile editoriale.
+
+#### 4. Fai una Pull Request
+
+Una volta completato l'articolo:
+
+```bash
+git add .
+git commit -m "Nuovo post: titolo del post"
+git push origin post/nome-del-post
+```
+
+Quindi apri una Pull Request su `main` tramite GitHub. Nel corpo della PR:
+- Descrivi brevemente il contenuto dell'articolo
+- Menziona eventuali particolarità o punti da rivedere
+- Se applicabile, indica se hai bisogno di feedback specifici
+
+#### 5. Anteprima online con Cloudflare Pages
+
+Quando fai push sul tuo branch, Cloudflare Pages crea automaticamente una preview deployment che ti permette di vedere come apparirà l'articolo online prima del merge.
+
+Per accedere all'anteprima:
+1. Vai alla dashboard di Cloudflare
+2. Naviga su **Compute / Workers & Pages**
+3. Seleziona il progetto del sito
+4. Troverai il link alla preview del tuo branch nella lista dei deployment
+
+Usa questa anteprima per verificare che tutto sia corretto (formattazione, immagini, link, ecc.) prima di richiedere la review.
+
+Il team revisionerà l'articolo e, una volta approvato, verrà fatto il merge su `main` e pubblicato.
 
 ### Aggiungere un Servizio
 
