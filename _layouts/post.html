@@ -5,11 +5,11 @@ layout: default
 <article class="container mx-auto px-4 py-12 max-w-4xl">
   <!-- Article Header -->
   <header class="mb-12 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100">
       {{ page.title }}
     </h1>
 
-    <div class="flex flex-wrap items-center justify-center text-gray-600 mb-6 gap-4">
+    <div class="flex flex-wrap items-center justify-center text-gray-600 dark:text-gray-400 mb-6 gap-4">
       <time datetime="{{ page.date | date_to_xmlschema }}" class="flex items-center">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -45,7 +45,7 @@ layout: default
     {% if page.tags %}
     <div class="flex flex-wrap justify-center gap-2 mb-6">
       {% for tag in page.tags %}
-      <span class="inline-block bg-blue-100 text-brand-primary px-4 py-1 rounded-full text-sm font-medium">
+      <span class="inline-block bg-blue-100 dark:bg-blue-900/30 text-brand-primary dark:text-blue-400 px-4 py-1 rounded-full text-sm font-medium">
         {{ tag }}
       </span>
       {% endfor %}
@@ -65,7 +65,7 @@ layout: default
   </div>
 
   <!-- Article Footer -->
-  <footer class="mt-12 pt-8 border-t border-gray-200">
+  <footer class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
     <div class="flex items-center justify-between">
       <div>
         <a href="{{ '/' | relative_url }}"
@@ -79,9 +79,9 @@ layout: default
 
 <!-- Related Posts -->
 {% if site.related_posts.size > 0 %}
-<section class="bg-gray-50 py-16">
+<section class="bg-gray-50 dark:bg-gray-800/50 py-16">
   <div class="container mx-auto px-4 max-w-6xl">
-    <h2 class="text-3xl font-bold text-center mb-12">Articoli Correlati</h2>
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Articoli Correlati</h2>
     <div class="grid md:grid-cols-3 gap-8">
       {% for post in site.related_posts limit:3 %}
       <article class="card p-6 hover-lift">
@@ -89,14 +89,14 @@ layout: default
         <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="w-full h-48 object-cover rounded-lg mb-4">
         {% endif %}
         <h3 class="text-xl font-semibold mb-2">
-          <a href="{{ post.url | relative_url }}" class="hover:text-brand-primary transition-colors">
+          <a href="{{ post.url | relative_url }}" class="text-gray-900 dark:text-gray-100 hover:text-brand-primary dark:hover:text-blue-400 transition-colors">
             {{ post.title }}
           </a>
         </h3>
-        <p class="text-gray-600 text-sm mb-4">
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
           {{ post.date | date: "%d %B %Y" }}
         </p>
-        <p class="text-gray-700">
+        <p class="text-gray-700 dark:text-gray-300">
           {{ post.excerpt | strip_html | truncatewords: 20 }}
         </p>
       </article>
