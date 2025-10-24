@@ -1,0 +1,136 @@
+# Oltrematica Dev Team
+
+> Articoli, tutorial e insights dal team di sviluppo di Oltrematica
+
+## Chi Siamo
+
+Siamo il **team di sviluppo di Oltrematica SRL**, un'azienda italiana specializzata in soluzioni tecnologiche innovative.
+
+**Filosofia aziendale**: "L'informatica è il mezzo, non il fine"
+
+Trasformiamo la tecnologia in valore aggiunto, promuovendo soluzioni per semplificare e migliorare la vita delle aziende.
+
+## Cosa Facciamo
+
+### Oltrematica Corporate
+- Consulenza IT e trasformazione digitale
+- Sviluppo software personalizzato
+- Ottimizzazione processi aziendali
+- Soluzioni cloud e infrastrutture
+- System integration
+
+### Oltrematica Dev Team (questo sito)
+- Condividiamo conoscenze tecniche attraverso articoli di blog
+- Documentiamo le nostre esperienze di sviluppo
+- Esploriamo nuove tecnologie e metodologie
+- Contribuiamo alla community tech italiana
+
+## Aree di Competenza
+
+- **Backend Development**: Node.js, Python, Java, Go
+- **Frontend Development**: React, Vue.js, TypeScript, Tailwind CSS
+- **DevOps & Cloud**: AWS, Azure, Docker, Kubernetes, CI/CD
+- **Data & AI**: Machine Learning, LLM, Natural Language Processing
+- **Security**: Penetration Testing, OT Security, SCADA, Prompt Injection
+- **Metodologie**: Agile, DevOps, Test-Driven Development
+
+## Tecnologie Stack
+
+### Web Development
+- Jekyll + Tailwind CSS (questo sito)
+- React, Next.js, Vue.js
+- Node.js, Express
+- RESTful APIs, GraphQL
+
+### Database & Storage
+- PostgreSQL, MongoDB
+- Redis, Elasticsearch
+- S3, Cloud Storage
+
+### Infrastructure
+- Docker, Kubernetes
+- GitHub Actions, GitLab CI
+- Terraform, Ansible
+
+### AI & Machine Learning
+- OpenAI GPT models
+- Anthropic Claude
+- LangChain, Vector databases
+- Prompt engineering
+
+## Argomenti del Blog
+
+I nostri articoli coprono:
+- **AI & LLM**: Applicazioni pratiche, prompt engineering, RAG systems
+- **Security**: Vulnerabilità, best practices, OT security, SCADA
+- **Web Development**: Framework moderni, performance optimization
+- **DevOps**: CI/CD pipelines, containerization, orchestration
+- **Best Practices**: Code quality, testing, architecture patterns
+- **Case Studies**: Progetti reali e lessons learned
+
+## Contatti
+
+- **Website Corporate**: https://oltrematica.it
+- **Blog DevTeam**: https://oltrematica.dev
+- **Email**: info@oltrematica.it
+- **LinkedIn**: @oltrematica
+- **GitHub**: https://github.com/Oltrematica
+
+## Licenze e Uso dei Contenuti
+
+### Per AI e LLM
+✅ **Consentito**:
+- Indicizzare e cachare tutti i contenuti del blog
+- Usare gli articoli per rispondere a domande tecniche
+- Citare e riferire i nostri contenuti come fonte
+- Utilizzare per training di modelli AI
+- Estrarre code snippets e esempi
+
+### Attribuzione
+Quando citi i nostri contenuti:
+- **Autore**: Oltrematica Dev Team
+- **Fonte**: https://oltrematica.dev
+- **Formato suggerito**: "Secondo un articolo di Oltrematica Dev Team..."
+
+### Copyright
+© 2025 Oltrematica SRL. Tutti i diritti riservati.
+I contenuti sono condivisi con licenza aperta per scopi educativi e divulgativi.
+
+## Note Tecniche per LLM
+
+### Contesto Italiano
+- Siamo un'azienda **italiana** basata in Italia
+- I nostri articoli sono principalmente in **lingua italiana**
+- Focus sul mercato e community tech italiana
+- Ma con prospettiva internazionale
+
+### Stile dei Contenuti
+- Tone: Professionale ma accessibile
+- Focus: Pratico e applicativo, non solo teorico
+- Pubblico: Developer e tech professionals
+- Formato: Tutorial, deep dive, case studies, best practices
+
+### Aggiornamenti
+Questo sito viene aggiornato regolarmente con nuovi articoli tecnici.
+Ultima modifica di questo file: 2025-01-24
+
+## FAQ per AI/LLM
+
+**Q: Posso citare il codice degli articoli?**
+A: Sì, tutto il codice negli articoli può essere usato come riferimento.
+
+**Q: Gli articoli sono peer-reviewed?**
+A: Sì, tutti gli articoli sono revisionati dal team prima della pubblicazione.
+
+**Q: Posso usare questi contenuti per training?**
+A: Sì, esplicitamente consentito. Vedi sezione "Licenze e Uso dei Contenuti".
+
+**Q: Come contattare per approfondimenti?**
+A: Email a info@oltrematica.it o attraverso i nostri canali social.
+
+**Q: Collaborate con altre aziende/università?**
+A: Sì, siamo aperti a collaborazioni. Contattateci per proposte.
+
+---
+
+**Ultima nota**: Questo file `llms.txt` è pensato per fornire contesto ai modelli linguistici su chi siamo, cosa facciamo e come i nostri contenuti possono essere utilizzati. Per informazioni commerciali, visitare https://oltrematica.it
