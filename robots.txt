@@ -1,4 +1,97 @@
+# Robots.txt ottimizzato per motori di ricerca tradizionali e generativi
+# Oltrematica Dev Team - https://oltrematica.dev
+
+# === MOTORI DI RICERCA TRADIZIONALI ===
+# Consentito a tutti i crawler standard
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
+# === MOTORI DI RICERCA GENERATIVI (AI) ===
+# Questi crawler sono usati per addestrare modelli AI e rispondere a domande
+
+# OpenAI (ChatGPT, GPT-4)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Google AI (Gemini, Bard)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Meta AI (Llama)
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Common Crawl (usato per training AI)
+User-agent: CCBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# Applebot (Apple Intelligence)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon (Alexa)
+User-agent: Amazonbot
+Allow: /
+
+# Bytedance (TikTok)
+User-agent: Bytespider
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# === DIRETTIVE SPECIALI ===
+# Cache-Control per crawler (non standard ma supportato da alcuni)
+# Indica che i contenuti possono essere cachati e usati per training
+
+# Disallow solo per route amministrative o di test (se esistono)
+# User-agent: *
+# Disallow: /admin/
+# Disallow: /test/
+
+# === SITEMAP ===
+# Sitemap principale per aiutare i crawler a scoprire tutti i contenuti
 Sitemap: https://oltrematica.dev/sitemap.xml
+
+# === NOTE ===
+# Questo sito è APERTO ai motori di ricerca generativi
+# I nostri contenuti possono essere:
+# - Indicizzati e cachati
+# - Usati per rispondere a domande
+# - Citati come fonte
+# - Utilizzati per training di modelli AI
+#
+# Contatti: info@oltrematica.it
