@@ -121,7 +121,7 @@
     }
   }
 
-  // Add animation on scroll
+  // Add animation on scroll with stagger effect
   function initScrollAnimation() {
     const observerOptions = {
       threshold: 0.1,
@@ -131,14 +131,78 @@
     const observer = new IntersectionObserver(function(entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in-up');
+          // Add stagger delay for cards
+          const delay = entry.target.dataset.index ? entry.target.dataset.index * 100 : 0;
+
+          setTimeout(() => {
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.style.opacity = '1';
+            // Ensure pointer events are enabled
+            entry.target.style.pointerEvents = 'auto';
+          }, delay);
+
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    const elements = document.querySelectorAll('.card, .section-title');
-    elements.forEach(el => observer.observe(el));
+    // Add index to cards for stagger effect
+    const cards = document.querySelectorAll('article.card');
+    cards.forEach((card, index) => {
+      card.dataset.index = index % 3; // Stagger per row of 3
+      card.style.opacity = '0';
+      card.style.pointerEvents = 'auto'; // Ensure cards remain clickable
+      observer.observe(card);
+    });
+
+    // Observe other elements
+    const otherElements = document.querySelectorAll('.section-title, .section-subtitle');
+    otherElements.forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+  }
+
+  // Add parallax effect to hero sections
+  function initParallax() {
+    const heroSections = document.querySelectorAll('[data-parallax]');
+
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+
+      heroSections.forEach(section => {
+        const speed = section.dataset.parallax || 0.5;
+        section.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+  }
+
+  // Add magnetic effect to buttons only (not cards to keep them clickable)
+  function initMagneticButtons() {
+    // Only apply to standalone buttons, not inside cards or articles
+    const buttons = document.querySelectorAll('.btn');
+
+    buttons.forEach(button => {
+      // Skip if button is inside a card or article
+      if (button.closest('article') || button.closest('.card')) {
+        return;
+      }
+
+      button.addEventListener('mousemove', function(e) {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        const moveX = x * 0.15;
+        const moveY = y * 0.15;
+
+        button.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+
+      button.addEventListener('mouseleave', function() {
+        button.style.transform = '';
+      });
+    });
   }
 
   // Code syntax highlighting (if needed)
@@ -165,6 +229,8 @@
     // Only init scroll animation if user hasn't disabled animations
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       initScrollAnimation();
+      initParallax();
+      initMagneticButtons();
     }
 
     initCodeHighlight();

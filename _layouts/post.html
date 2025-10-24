@@ -45,7 +45,7 @@ layout: default
     {% if page.tags %}
     <div class="flex flex-wrap justify-center gap-2 mb-6">
       {% for tag in page.tags %}
-      <span class="inline-block bg-blue-100 dark:bg-blue-900/30 text-brand-primary dark:text-blue-400 px-4 py-1 rounded-full text-sm font-medium">
+      <span class="inline-block bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 text-brand-primary dark:text-blue-400 px-4 py-2 rounded-full text-sm font-medium border border-blue-200 dark:border-blue-800 hover:scale-110 transition-transform duration-200 cursor-default shadow-sm">
         {{ tag }}
       </span>
       {% endfor %}
@@ -79,9 +79,16 @@ layout: default
 
 <!-- Related Posts -->
 {% if site.related_posts.size > 0 %}
-<section class="bg-gray-50 dark:bg-gray-800/50 py-16">
+<section class="relative bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30 dark:from-gray-800/50 dark:via-blue-900/10 dark:to-indigo-900/10 py-16">
   <div class="container mx-auto px-4 max-w-6xl">
-    <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Articoli Correlati</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-gray-100">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400">
+        Articoli Correlati
+      </span>
+    </h2>
+    <p class="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+      Scopri altri contenuti che potrebbero interessarti
+    </p>
     <div class="grid md:grid-cols-3 gap-8">
       {% for post in site.related_posts limit:3 %}
       <article class="card p-6 hover-lift">
@@ -106,5 +113,6 @@ layout: default
 </section>
 {% endif %}
 
-<!-- Code copy functionality -->
-<script src="{{ '/assets/js/code-copy.js' | relative_url }}"></script>
+<!-- Code copy functionality con versioning -->
+{% assign asset_version = site.time | date: '%s' %}
+<script src="{{ '/assets/js/code-copy.js' | relative_url }}?v={{ asset_version }}"></script>

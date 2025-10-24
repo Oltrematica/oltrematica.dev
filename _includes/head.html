@@ -17,9 +17,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Preload CSS principale -->
-  <link rel="preload" href="{{ '/assets/css/styles.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}"></noscript>
+  <!-- Cache busting version -->
+  {% assign asset_version = site.time | date: '%s' %}
+
+  <!-- Preload CSS principale con versioning -->
+  <link rel="preload" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ asset_version }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ asset_version }}"></noscript>
 
   <!-- Google Fonts con caricamento asincrono -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -56,12 +59,15 @@
   <meta name="robots" content="index, follow">
 
   {% if page.custom_css %}
-    <link rel="stylesheet" href="{{ '/assets/css/' | append: page.custom_css | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/' | append: page.custom_css | relative_url }}?v={{ asset_version }}">
   {% endif %}
 
   {% if page.custom_js %}
-    <script defer src="{{ '/assets/js/' | append: page.custom_js | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/' | append: page.custom_js | relative_url }}?v={{ asset_version }}"></script>
   {% endif %}
+
+  <!-- Main JavaScript con versioning -->
+  <script defer src="{{ '/assets/js/main.js' | relative_url }}?v={{ asset_version }}"></script>
 
   <!-- Preload immagine LCP per i post -->
   {% if page.layout == 'post' and page.image %}

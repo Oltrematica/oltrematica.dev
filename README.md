@@ -260,6 +260,41 @@ I fonts sono caricati da Google Fonts in `_includes/head.html`. Puoi modificare 
 - **jekyll-seo-tag**: Meta tags SEO automatici
 - **jekyll-feed**: RSS feed automatico
 
+## Cache Busting e Versioning
+
+Il sito implementa un sistema automatico di **cache busting** per invalidare la cache del browser ad ogni build.
+
+### Come Funziona
+
+Tutti i file CSS e JavaScript vengono automaticamente versionati utilizzando il timestamp di build di Jekyll (`site.time`). Questo garantisce che ad ogni ricompilazione, i browser scarichino le versioni aggiornate degli asset.
+
+**File interessati:**
+- `/assets/css/styles.css` → `styles.css?v=1234567890`
+- `/assets/js/main.js` → `main.js?v=1234567890`
+- `/assets/js/code-copy.js` → `code-copy.js?v=1234567890`
+- Custom CSS/JS per pagina
+
+### Implementazione
+
+Il versioning è gestito automaticamente tramite Liquid template in `_includes/head.html`:
+
+```liquid
+{% assign asset_version = site.time | date: '%s' %}
+<link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ asset_version }}">
+<script defer src="{{ '/assets/js/main.js' | relative_url }}?v={{ asset_version }}"></script>
+```
+
+### Vantaggi
+
+- ✅ **Aggiornamenti immediati**: Gli utenti vedono sempre l'ultima versione dopo ogni deploy
+- ✅ **Nessuna configurazione manuale**: Il versioning è completamente automatico
+- ✅ **Cache ottimizzata**: I file non modificati mantengono la cache tra i build
+- ✅ **SEO-friendly**: Non impatta negativamente sulle performance o indicizzazione
+
+### Nota per il Deployment
+
+Ogni volta che esegui `npm run build` o `bundle exec jekyll build`, viene generato un nuovo hash basato sul timestamp, invalidando automaticamente la cache del browser.
+
 ## Performance
 
 Il sito è ottimizzato per:
@@ -267,6 +302,7 @@ Il sito è ottimizzato per:
 - SEO (100/100 su Lighthouse)
 - Accessibilità (WCAG 2.1)
 - Best practices
+- Cache busting automatico
 
 ## Browser Support
 
