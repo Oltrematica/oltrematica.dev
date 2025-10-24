@@ -64,37 +64,10 @@
 
 <!-- Back to Top Button -->
 <button id="back-to-top"
-        class="fixed bottom-8 right-8 bg-brand-primary dark:bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700 dark:hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+        class="fixed bottom-8 right-8 bg-brand-primary dark:bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700 dark:hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 z-50 pointer-events-auto"
+        style="pointer-events: auto !important;"
         aria-label="Torna su">
   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
   </svg>
 </button>
-
-<script>
-  // Back to top button functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const backToTopButton = document.getElementById('back-to-top');
-
-    if (backToTopButton) {
-      // Show/hide button based on scroll position
-      window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.remove('opacity-0', 'invisible');
-          backToTopButton.classList.add('opacity-100', 'visible');
-        } else {
-          backToTopButton.classList.remove('opacity-100', 'visible');
-          backToTopButton.classList.add('opacity-0', 'invisible');
-        }
-      });
-
-      // Scroll to top when clicked
-      backToTopButton.addEventListener('click', function() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    }
-  });
-</script>
