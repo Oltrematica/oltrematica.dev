@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: 'media', // Abilita darkmode automatica basata sulle preferenze di sistema
   content: [
     './_includes/**/*.html',
     './_layouts/**/*.html',
@@ -92,6 +93,36 @@ module.exports = {
             },
             'code::after': {
               content: '""',
+            },
+          },
+        },
+        invert: {
+          css: {
+            color: theme('colors.gray.300'),
+            a: {
+              color: theme('colors.blue.400'),
+              '&:hover': {
+                color: theme('colors.blue.300'),
+              },
+            },
+            h1: {
+              color: theme('colors.gray.100'),
+            },
+            h2: {
+              color: theme('colors.gray.100'),
+            },
+            h3: {
+              color: theme('colors.gray.100'),
+            },
+            h4: {
+              color: theme('colors.gray.100'),
+            },
+            strong: {
+              color: theme('colors.gray.100'),
+            },
+            blockquote: {
+              color: theme('colors.gray.300'),
+              borderLeftColor: theme('colors.blue.500'),
             },
           },
         },
